@@ -1,5 +1,5 @@
 const express =require('express');
-const Post = require('../models/Feed');
+const Postdata = require('../models/Feed');
 
 const noticeRoute=express.Router()
 
@@ -7,7 +7,7 @@ const noticeRoute=express.Router()
 noticeRoute.post('/postdata',async(req,res)=>{
 try{
 const {msg,username}=req.body;
-const post=new Post({msg,username})
+const post=new Postdata({msg,username})
 await post.save()
 res.status(201).send(post)
     }
@@ -21,7 +21,7 @@ noticeRoute.get('/alldata',async(req,res)=>{
    
   try{
       
-        const allpost=await Post.find().sort({"createdAt":-1})
+        const allpost=await Postdata.find().sort({"createdAt":-1})
 
         res.send(allpost)
     
