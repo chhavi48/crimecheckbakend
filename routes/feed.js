@@ -6,8 +6,8 @@ const noticeRoute=express.Router()
 
 noticeRoute.post('/postdata',async(req,res)=>{
 try{
-const {msg}=req.body;
-const post=new Postdata({msg})
+const {msg,username}=req.body;
+const post=new Postdata({msg,username})
 await post.save()
 res.status(201).send(post)
     }
